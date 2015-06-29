@@ -1,0 +1,27 @@
+if (ip.proto == TCP && tcp.dst == 80){
+	if (search(DATA.data, "POST /api2/")){
+		drop();
+		kill();
+		msg("POST DENEGADO!\n");
+   	}
+   	if (search(DATA.data, "[RST]")){
+		drop();
+		kill();
+		msg("REPETICIÓN DENEGADA!\n");
+   	}
+   	if (search(DATA.data, "[SYN]")){
+		drop();
+		kill();
+		msg("REPETICIÓN DENEGADA!\n");
+   	}
+   	if (search(DATA.data, "[ACK]")){
+		drop();
+		kill();
+		msg("REPETICIÓN DENEGADA!\n");
+   	}
+	if (search(DATA.data, "GET /api2/")){
+		drop();
+		kill();
+		msg("GET DENEGADO!\n");
+   	}
+}
